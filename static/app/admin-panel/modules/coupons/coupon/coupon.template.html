@@ -1,0 +1,95 @@
+<link rel="stylesheet" href="/static/app/admin-panel/modules/store/store/store.css" />
+
+<div class="panel panel-default" style="margin-top: 90px;">
+    <div class="panel-heading">
+        <div class="row">
+            <div class="col-lg-6">
+                <h1 style="margin-top: 10px;">
+                    All Coupons
+                </h1>
+            </div>
+            <!-- end col -->
+            <div class="col-lg-2 pull-right">
+                <a class="btn btn-sm btn-info pull-right" style="margin-top: 15px;" ui-sref="header.add-coupon">Add Coupon</a>
+            </div>
+        </div>
+        <!-- end row -->
+    </div>
+
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-xs-12 third-controller">
+                <div class="row">
+                    <div class="col-xs-2">
+                        <label for="search">Search:</label>
+                        <input ng-model="q" id="search" class="form-control input-sm" placeholder="Filter text">
+                    </div>
+                    <div class="col-xs-2">
+                        <label for="search">Items per page:</label>
+                        <input type="number" min="1" max="100" class="form-control input-sm" ng-model="pageSize">
+                    </div>
+                </div>
+                <br>
+
+                <table class="table table-bordered table-responsive table-hover">
+                    <thead>
+                        <tr>
+                            <th>S.no</th>
+                            <th>Store Name</th>
+                            <th>Store Address</th>
+                            <th>View/Update</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr dir-paginate="drink in drinks | filter:q | itemsPerPage: pageSize" current-page="currentPage" pagination-id="drinksPagination">
+                            <td>
+                                {{ $index + 1 }}
+                            </td>
+                            <td>
+                                {{ drink }}
+                            </td>
+                            <td></td>
+                            <td>
+                                <a ui-sref="header.update-coupon({couponId: $index + 1})" class="btn btn-sm btn-default">View/Update</a>
+                            </td>
+                            <td>
+                                <button ng-click="toggleSidebar()" class="btn btn-sm btn-primary">Delete</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="text-center">
+                    <dir-pagination-controls boundary-links="true" on-page-change="pageChangeHandler(newPageNumber)" pagination-id="drinksPagination"></dir-pagination-controls>
+                </div>
+            </div>
+        </div>
+        <!-- end row -->
+    </div>
+    <!-- end panel-body -->
+</div>
+
+
+<!-- delete popup -->
+<div class="delete-popup" id="sidebar-affix">
+    <div class="delete-close" ng-click="toggleSidebar()">
+        <i class="fa fa-close"></i>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <h1>Are you Sure?</h1>
+            <p><b>Fatima</b> store will be deleted permanently!!</p>
+        </div>
+    </div>
+
+    <div class="row" style="margin-top: 30px;">
+        <div class="col-lg-2">
+            <button class="btn btn-block btn-md btn-danger">Yes</button>
+        </div>
+        <div class="col-lg-2 col-md-2 col-sm-12">
+            <button class="btn btn-block btn-md btn-default" ng-click="toggleSidebar()">No</button>
+        </div>
+    </div>
+</div>
+<!-- delete popup -->

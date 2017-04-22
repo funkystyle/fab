@@ -1,0 +1,75 @@
+<link rel="stylesheet" href="/static/app/admin-panel/modules/register/register.css" />
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-offset-3 col-lg-5 col-md-offset-3 col-md-3 col-sm-12">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h1 class="text-center" style="margin-bottom: 40px;"><b>Fab PromoCodes</b></h1>
+                    <form name="signup" ng-submit="registerNow(register)">
+                        <div class="form-group col-md-6">
+                            <label for="first_name">FIRST NAME</label>
+                            <input type="text" class="form-control" ng-model="register.first_name" placeholder="FIRST NAME" />
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="first_name">LAST NAME</label>
+                            <input type="text" class="form-control" ng-model="register.last_name" placeholder="LAST NAME" />
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label for="email">Email address</label>
+                            <input type="email" class="form-control" id="email" ng-model="register.email" placeholder="Email" autocomplete="off">
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label for="mobile_number">MOBILE NUMBER</label>
+                            <input type="text" only-digits class="form-control" id="mobile_number" ng-model="register.mobile_number" placeholder="MOBILE NUMBER" autocomplete="off">
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label for="password">Password</label>
+                            <input type="password" class="form-control" id="password" placeholder="Password">
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label for="user_level">User Level</label>
+                            <ui-select ng-model="register.userLevel" theme="bootstrap">
+                                <ui-select-match placeholder="Select User Level">{{ $select.selected.text }}</ui-select-match>
+                                <ui-select-choices repeat="item in userLevels | filter: $select.search">
+                                    <div ng-bind-html="item.text | highlight: $select.search"></div>
+                                </ui-select-choices>
+                            </ui-select>
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label for="created_date">Created Date</label>
+                            <p class="input-group">
+                                <input type="text" class="form-control input-sm" uib-datepicker-popup ng-model="register.created_date" is-open="popup2.created_date" ng-required="true" close-text="Close" id="created_date" />
+                                <span class="input-group-btn">
+                            <button type="button" class="btn btn-default btn-sm" ng-click="popup2.created_date = !popup2.created_date"><i class="glyphicon glyphicon-calendar"></i></button>
+                        </span>
+                            </p>
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label for="modified_date">Modified Date</label>
+                            <p class="input-group">
+                                <input type="text" class="form-control input-sm" uib-datepicker-popup ng-model="register.modified_date" is-open="popup2.modified_date" ng-required="true" close-text="Close" id="created_date" />
+                                <span class="input-group-btn">
+                            <button type="button" class="btn btn-default btn-sm" ng-click="popup2.modified_date = !popup2.modified_date"><i class="glyphicon glyphicon-calendar"></i></button>
+                        </span>
+                            </p>
+                        </div>
+                        <div class="checkbox col-md-12">
+                            <label>
+                                <input type="checkbox"> Keep me logged in*
+                            </label>
+                        </div>
+
+                        <div class="form-group col-md-12">
+                            <button type="submit" class="btn btn-primary btn-md btn-block">Register now</button>
+                        </div>
+
+                        <div class="form-group col-md-12" style="margin-top: 20px;">
+                            <a ui-sref="login" class="btn btn-md btn-info btn-block">Login Now</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

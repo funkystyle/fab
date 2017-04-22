@@ -1,0 +1,256 @@
+<link rel="stylesheet" href="/static/app/admin-panel/modules/store/add/add.store.css" />
+
+<div class="panel panel-default" style="margin-top: 90px;">
+    <div class="panel-heading">
+        <div class="row">
+            <div class="col-lg-6">
+                <h1 style="margin-top: 10px;">
+                    Update <b>Fatima</b> Store!
+                </h1>
+            </div> <!-- end col -->
+        </div> <!-- end row -->
+    </div>
+
+    <div class="panel-body">
+        <form ng-submit="addStore(store)">
+            <div class="row">
+                <div class="col-lg-3 col-md-3 col-sm-12">
+                    <div class="form-group">
+                        <label for="store_name">Store Name</label>
+                        <input type="email" class="form-control input-sm" id="store_name"
+                               placeholder="Store Name" ng-model="store.store_name">
+                    </div>
+                    <div class="form-group">
+                        <label for="url">Store URL</label>
+                        <input type="text" class="form-control input-sm" id="url"
+                               placeholder="URL" ng-model="store.url">
+                    </div>
+                    <div class="form-group">
+                        <label for="store_image">Store Image</label>
+                        <input type="file" id="store_image" ng-model="store.store_image">
+                        <p class="help-block">Example block-level help text here.</p>
+                    </div>
+                    <div class="form-group">
+                        <label for="store_top_desc">Top Description</label>
+                        <input type="password" class="form-control input-sm" id="store_top_desc"
+                               placeholder="Top Description" ng-model="store.store_top_description">
+                    </div>
+                    <div class="form-group">
+                        <label for="store_footer_desc">Footer Description</label>
+                        <input type="password" class="form-control input-sm" id="store_footer_desc"
+                               placeholder="Footer Description" ng-model="store.store_footer_description">
+                    </div>
+                    <div class="form-group">
+                        <label for="store_h1">Store H1</label>
+                        <input type="email" class="form-control input-sm" id="store_h1" placeholder="Store H1">
+                    </div>
+                    <div class="form-group">
+                        <label for="store_h2">Store H2</label>
+                        <input type="text" class="form-control input-sm" id="store_h2" placeholder="Store H2">
+                    </div>
+                    <div class="form-group">
+                        <label for="no_of_coupons">No Of Coupons</label>
+                        <input type="text" class="form-control input-sm" id="no_of_coupons" placeholder="No Of Coupons"
+                               ng-model="store.no_of_coupons">
+                    </div>
+                    <div class="form-group">
+                        <label for="menu">Menu</label>
+                        <input type="text" class="form-control input-sm" id="menu" placeholder="Menu"
+                               ng-model="store.menu">
+                    </div>
+                </div><!-- end col -->
+                <div class="col-lg-3 col-md-3 col-sm-12">
+                    <div class="form-group">
+                        <label>Related Stores</label>
+                        <ui-select multiple ng-model="store.related_stores" theme="bootstrap" close-on-select="false"  title="Related Stores">
+                            <ui-select-match placeholder="Select Multiple Related Stores">{{$item.name}}</ui-select-match>
+                            <ui-select-choices repeat="person.email as person in people | propsFilter: {name: $select.search, age: $select.search}">
+                                <div ng-bind-html="person.name | highlight: $select.search"></div>
+                                <small>
+                                    email: {{person.email}}
+                                    age: <span ng-bind-html="''+person.age | highlight: $select.search"></span>
+                                </small>
+                            </ui-select-choices>
+                        </ui-select>
+                    </div>
+                    <div class="form-group">
+                        <label>Top Stores</label>
+                        <ui-select multiple ng-model="store.top_stores" theme="bootstrap" close-on-select="false"  title="Related Stores">
+                            <ui-select-match placeholder="Select Multiple Top Stores">{{$item.name}}</ui-select-match>
+                            <ui-select-choices repeat="person.email as person in people | propsFilter: {name: $select.search, age: $select.search}">
+                                <div ng-bind-html="person.name | highlight: $select.search"></div>
+                                <small>
+                                    email: {{person.email}}
+                                    age: <span ng-bind-html="''+person.age | highlight: $select.search"></span>
+                                </small>
+                            </ui-select-choices>
+                        </ui-select>
+                    </div>
+                    <div class="form-group">
+                        <label for="store_url">Featured Store</label> <br />
+                        <label class="radio-inline"><input type="radio" name="store.rating" ng-model="store.featured_store">Yes</label>
+                        <label class="radio-inline"><input type="radio" name="store.rating" ng-model="store.featured_store">No</label>
+                    </div>
+                    <div class="form-group">
+                        <label for="store_rating">Rating</label>
+                        <input type="number" class="form-control input-sm" id="store_rating" placeholder="Store Rating"
+                               ng-model="store.rating">
+                    </div>
+                    <div class="form-group">
+                        <label for="side_banner">Side Banner</label>
+                        <input type="file" id="side_banner" ng-model="store.side_banner">
+                        <p class="help-block">Example block-level help text here.</p>
+                    </div>
+                    <div class="form-group">
+                        <label for="top_banner">Top Banner</label>
+                        <input type="file" id="top_banner" ng-model="store.top_banner">
+                        <p class="help-block">Example block-level help text here.</p>
+                    </div>
+                    <div class="form-group">
+                        <label for="meta_title">Meta Title</label>
+                        <textarea class="form-control input-sm" id="meta_title" placeholder="Meta Title"
+                                  ng-model="store.meta_title"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Status</label> <br />
+                        <label class="radio-inline"><input type="radio" name="store.status" ng-model="store.status">Active</label>
+                        <label class="radio-inline"><input type="radio" name="store.status" ng-model="store.status">Pending</label>
+                    </div>
+
+
+                </div> <!-- end col -->
+                <div class="col-lg-3 col-md-3 col-sm-12">
+                    <div class="form-group">
+                        <label for="meta_description">Meta Description</label>
+                        <textarea class="form-control input-sm" id="meta_description" placeholder="Meta Description"
+                                  ng-model="store.meta_description"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="created_date">Created Date</label>
+                        <p class="input-group">
+                            <input type="text" class="form-control input-sm" uib-datepicker-popup ng-model="store.created_date"
+                                   is-open="popup2.created_date" ng-required="true"
+                                   close-text="Close" id="created_date" />
+                            <span class="input-group-btn">
+                            <button type="button" class="btn btn-default btn-sm" ng-click="popup2.created_date = !popup2.created_date"><i class="glyphicon glyphicon-calendar"></i></button>
+                        </span>
+                        </p>
+                    </div>
+                    <div class="form-group">
+                        <label for="modified_date">Modified Date</label>
+                        <p class="input-group">
+                            <input type="text" class="form-control input-sm" uib-datepicker-popup ng-model="store.modified_date"
+                                   is-open="popup2.modified_date" ng-required="true"
+                                   close-text="Close" id="modified_date" />
+                            <span class="input-group-btn">
+                            <button type="button" class="btn btn-default btn-sm" ng-click="popup2.modified_date = !popup2.modified_date"><i class="glyphicon glyphicon-calendar"></i></button>
+                        </span>
+                        </p>
+                    </div>
+                    <div class="form-group">
+                        <label>Top Category Stores</label>
+                        <ui-select multiple ng-model="store.top_category_store" theme="bootstrap" close-on-select="false"  title="Select Top Category Stores">
+                            <ui-select-match placeholder="Select Top Category Stores">{{$item.name}}</ui-select-match>
+                            <ui-select-choices repeat="person.email as person in people | propsFilter: {name: $select.search, age: $select.search}">
+                                <div ng-bind-html="person.name | highlight: $select.search"></div>
+                                <small>
+                                    email: {{person.email}}
+                                    age: <span ng-bind-html="''+person.age | highlight: $select.search"></span>
+                                </small>
+                            </ui-select-choices>
+                        </ui-select>
+                    </div>
+                    <div class="form-group">
+                        <label for="twitter_id">Twitter ID</label>
+                        <input type="text" class="form-control input-sm" id="twitter_id" placeholder="Twitter ID"
+                               ng-model="store.twitter_id">
+                    </div>
+                    <div class="form-group">
+                        <label for="breadcrumbs">BreadCrumbs</label>
+                        <input type="text" class="form-control input-sm" id="breadcrumbs" placeholder="Breadcrumbs"
+                               ng-model="store.breadcrumbs">
+                    </div>
+                    <div class="form-group">
+                        <label>No Of Deals</label>
+                        <ui-select multiple ng-model="store.no_of_deals" theme="bootstrap" close-on-select="false"  title="Select Top Category Stores">
+                            <ui-select-match placeholder="No Of Deals">{{$item.name}}</ui-select-match>
+                            <ui-select-choices repeat="person.email as person in people | propsFilter: {name: $select.search, age: $select.search}">
+                                <div ng-bind-html="person.name | highlight: $select.search"></div>
+                                <small>
+                                    email: {{person.email}}
+                                    age: <span ng-bind-html="''+person.age | highlight: $select.search"></span>
+                                </small>
+                            </ui-select-choices>
+                        </ui-select>
+                    </div>
+                    <div class="form-group">
+                        <label for="contact_number">Contact Number</label>
+                        <input type="number" class="form-control input-sm" id="contact_number" placeholder="Contact Number"
+                               ng-model="store.contact_number">
+                    </div>
+                    <div class="form-group">
+                        <label for="store_url">Store URL</label>
+                        <input type="text" class="form-control input-sm" id="store_url" placeholder="Store URL"
+                               ng-model="store.store_url">
+                    </div>
+
+                </div> <!-- end col -->
+                <div class="col-lg-3 col-md-3 col-sm-12">
+                    <div class="form-group">
+                        <label for="facebook">Facebook URL</label>
+                        <input type="text" class="form-control input-sm" id="facebook" placeholder="Facebook URL"
+                               ng-model="store.facebook">
+                    </div>
+                    <div class="form-group">
+                        <label for="google_plus">Google+ URL</label>
+                        <input type="text" class="form-control input-sm" id="google_plus" placeholder="Google+ URL"
+                               ng-model="store.google_plus">
+                    </div>
+                    <div class="form-group">
+                        <label for="twitter">Twitter URL</label>
+                        <input type="text" class="form-control input-sm" id="twitter" placeholder="Twitter URL"
+                               ng-model="store.twitter">
+                    </div>
+                    <div class="form-group">
+                        <label for="youtube">YouTube</label>
+                        <input type="text" class="form-control input-sm" id="youtube" placeholder="YouTube URL"
+                               ng-model="store.youtube">
+                    </div>
+                    <div class="form-group">
+                        <label for="pinterest">Pinterest</label>
+                        <input type="text" class="form-control input-sm" id="pinterest" placeholder="Pinterest URL"
+                               ng-model="store.pinterest">
+                    </div>
+                    <div class="form-group">
+                        <label for="store_address">Store Address</label>
+                        <textarea class="form-control input-sm" id="store_address" placeholder="Store Address"
+                                  ng-model="store.store_address"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="store_email_id">Store Email ID</label>
+                        <input type="email" class="form-control input-sm" id="store_email_id" placeholder="Store Email ID"
+                               ng-model="store.store_email_id">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Last Modified By</label>
+                        <ui-select multiple ng-model="store.last_modified_by" theme="bootstrap" close-on-select="false"
+                                   title="Last Modified By">
+                            <ui-select-match placeholder="Last Modified By">{{$item.name}}</ui-select-match>
+                            <ui-select-choices repeat="person.email as person in people | propsFilter: {name: $select.search, age: $select.search}">
+                                <div ng-bind-html="person.name | highlight: $select.search"></div>
+                                <small>
+                                    email: {{person.email}}
+                                    age: <span ng-bind-html="''+person.age | highlight: $select.search"></span>
+                                </small>
+                            </ui-select-choices>
+                        </ui-select>
+                    </div>
+                </div> <!-- end col -->
+            </div> <!-- end row -->
+
+            <button class="btn btn-lg btn-info btn-block submit">Update <b>Fatima</b> Store!</button>
+        </form>
+        <br><br><br><br><br><br>
+    </div> <!-- end panel-body -->
+</div>

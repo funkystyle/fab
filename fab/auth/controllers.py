@@ -270,9 +270,14 @@ def signup():
     response.status_code = 201
     return response
 
+@app.route('/admin/')
+def index():
+    LOGGER.info("ADMIN PANEL INDEX.HTML LOADED")
+    return make_response(open('static/app/admin-panel/index.html').read())
+
 @app.route('/')
 def index():
-    LOGGER.info("called index point")
-    return make_response(open('static/app/index.html').read())
+    LOGGER.info("called index point 1111")
+    return make_response(open('static/app/customer-panel/index.html').read())
 
 

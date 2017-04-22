@@ -1,0 +1,40 @@
+<link rel="stylesheet" href="/static/app/admin-panel/modules/settings/profile/profile.css" />
+<link rel="stylesheet" href="/static/bower_components/font-awesome-4.7.0/css/font-awesome.min.css" />
+
+<!-- Tab panes -->
+<div class="tab-content">
+    <div role="tabpanel" class="tab-pane active">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <h1 style="margin-bottom: 40px;">Profile Settings.!</h1>
+
+
+                <div class="row">
+                    <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 pad-0">
+                        <form name="signup" ng-submit="registerNow(register)">
+                            <div class="form-group col-md-6">
+                                <label for="first_name">FIRST NAME</label>
+                                <input type="text" class="form-control" ng-model="register.first_name" placeholder="FIRST NAME" />
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="first_name">LAST NAME</label>
+                                <input type="text" class="form-control" ng-model="register.last_name" placeholder="LAST NAME" />
+                            </div>
+                            <div class="form-group col-md-12">
+                                <label for="email">Email address</label>
+                                <input type="email" disabled class="form-control" id="email" ng-model="register.email" placeholder="Email" autocomplete="off">
+                            </div>
+                            <div class="form-group col-md-12">
+                                <label for="mobile_number">MOBILE NUMBER</label>
+                                <input type="text" only-digits class="form-control" id="mobile_number" ng-model="register.mobile_number" placeholder="MOBILE NUMBER" autocomplete="off">
+                            </div>
+                            <div class="form-group col-md-12">
+                                <button type="submit" class="btn btn-primary btn-md">Update now</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

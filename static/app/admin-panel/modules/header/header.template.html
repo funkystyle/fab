@@ -1,0 +1,74 @@
+<link rel="stylesheet" href="/static/app/admin-panel/modules/header/header.css" />
+<link rel="stylesheet" href="/static/bower_components/font-awesome-4.7.0/css/font-awesome.min.css" />
+
+<div id="throbber" style="display:none; min-height:120px;"></div>
+<div id="noty-holder"></div>
+<div id="wrapper">
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#/">
+                <img src="static/app/admin-panel/modules/assets/images/logo-png.png" alt="LOGO">
+            </a>
+        </div>
+        <!-- Top Menu Items -->
+        <ul class="nav navbar-right top-nav">
+            <li class="dropdown">
+                <a href="" class="dropdown-toggle" data-toggle="dropdown">Admin User <b class="fa fa-angle-down"></b></a>
+                <ul class="dropdown-menu">
+                    <li><a ui-sref="header.settings.profile"><i class="fa fa-fw fa-user"></i> Edit Profile</a></li>
+                    <li><a ui-sref="header.settings.profile"><i class="fa fa-fw fa-cog"></i> Settings</a></li>
+                    <li class="divider"></li>
+                    <li><a ui-sref="login"><i class="fa fa-fw fa-power-off"></i> Logout</a></li>
+                </ul>
+            </li>
+        </ul>
+        <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav side-nav">
+                <li ng-class="{'active sidebar-li': state.includes('header.dashboard')}"><a href="#/" style="background-color: transparent;">Dashboard</a></li>
+                <li>
+                    <a href="" data-toggle="collapse" data-target="#submenu-0">
+                        Coupons
+                        <i class="fa fa-fw pull-right" ng-class="{'fa-angle-down': state.includes('header.coupon') || state.includes('header.add-coupon'), 'fa-angle-right': !state.includes('header.coupon') || !state.includes('header.add-coupon')}"></i>
+                    </a>
+                    <ul id="submenu-0" class="collapse" ng-class="{in: state.includes('header.coupon') || state.includes('header.add-coupon')}">
+                        <li ng-class="{active: state.includes('header.coupon')}"><a href="#/coupons">All Coupons<i class="fa fa-angle-right pull-right"></i></a></li>
+                        <li ng-class="{active: state.includes('header.add-coupon')}"><a href="#/coupon/add">Add Coupon<i class="fa fa-angle-right pull-right"></i></a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="" data-toggle="collapse" data-target="#submenu-1">
+                        Deals
+                        <i class="fa fa-fw pull-right" ng-class="{'fa-angle-down': state.includes('header.deals') || state.includes('header.add-deal'), 'fa-angle-right': !state.includes('header.deals') || !state.includes('header.add-deal')}"></i>
+                    </a>
+                    <ul id="submenu-1" class="collapse" ng-class="{in: state.includes('header.deals') || state.includes('header.add-deal')}">
+                        <li ng-class="{active: state.includes('header.deals')}"><a href="#/deals">All Deals<i class="fa fa-angle-right pull-right"></i></a></li>
+                        <li ng-class="{active: state.includes('header.add-deal')}"><a href="#/deal/add">Add Deal<i class="fa fa-angle-right pull-right"></i></a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="" data-toggle="collapse" data-target="#submenu-2">
+                        Stores
+                        <i class="fa fa-fw pull-right" ng-class="{'fa-angle-down': state.includes('header.stores') || state.includes('header.add-store'), 'fa-angle-right': !state.includes('header.stores') || !state.includes('header.add-store')}"></i>
+                    </a>
+                    <ul id="submenu-2" class="collapse" ng-class="{in: state.includes('header.stores') || state.includes('header.add-store')}">
+                        <li ng-class="{active: state.includes('header.stores')}"><a href="#/stores">All Stores<i class="fa fa-angle-right pull-right"></i></a></li>
+                        <li ng-class="{active: state.includes('header.add-store')}"><a href="#/store/add">Add Store<i class="fa fa-angle-right pull-right"></i></a></li>
+                    </ul>
+                </li>
+                <li ng-class="{'active sidebar-li': state.includes('header.users.all') || state.includes('header.users.add')}"><a ui-sref="header.users.all" style="background-color: transparent;">Users</a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </nav>
+    <ui-view></ui-view>
+</div>
+<!-- /#wrapper -->

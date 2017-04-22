@@ -1,0 +1,128 @@
+<link rel="stylesheet" href="/static/app/admin-panel/modules/store/store/store.css" />
+
+<div class="panel panel-default" style="margin-top: 90px;">
+    <div class="panel-heading">
+        <div class="row">
+            <div class="col-lg-6">
+                <h1 style="margin-top: 10px;">
+                    All Stores
+                </h1>
+            </div>
+            <!-- end col -->
+            <div class="col-lg-2 pull-right">
+                <a class="btn btn-sm btn-info pull-right" style="margin-top: 15px;" ui-sref="header.add-store">Add Store</a>
+            </div>
+        </div>
+        <!-- end row -->
+    </div>
+
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-xs-12 third-controller">
+                <div class="row" ng-if="!show && stores.length">
+                    <div class="col-xs-2">
+                        <label for="search">Search:</label>
+                        <input ng-model="search.search" id="search" class="form-control input-sm" placeholder="Search...">
+                    </div>
+                    <div class="col-xs-2">
+                        <label for="search">Items per page:</label>
+                        <input type="number" min="1" max="100" class="form-control input-sm" ng-model="pageSize">
+                    </div>
+                </div>
+
+                <div class="row" ng-if="show && stores.length">
+                    <div class="col-lg-12">
+                        <button class="btn btn-md btn-info" ng-click="deleteSelected()">
+                            Delete Selected!
+                        </button>
+                    </div>
+                </div>
+                <br>
+
+                <table class="table table-bordered table-responsive table-hover">
+                    <thead>
+                        <tr>
+                            <th>
+                                <div class="checkbox" style="word-wrap: break-word; margin-top: 5px; line-height: 30px;">
+                                    <label for="select_all_filter" style="font-weight: 500;">
+                                        <input id="select_all_filter" type="checkbox" 
+                                            ng-model="check.all" ng-change="selectAll()" />
+                                        <span id="span_for_select" class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
+                                        <span>Select All</span>
+                                    </label>
+                                </div>
+                            </th>
+                            <th>Image</th>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Store URL</th>
+                            <th>
+                                Featured
+                            </th>
+                            <th>Active</th>
+                            <th>Coupons</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr dir-paginate="item in stores | filter:search.search | itemsPerPage: pageSize" current-page="currentPage" pagination-id="drinksPagination">
+                            <td>
+                                <div class="checkbox" style="word-wrap: break-word; margin-top: 5px; line-height: 30px;">
+                                    <label for="check_box_store_{{ item.id }}" style="font-weight: 500;">
+                                    <input id="check_box_store_{{ item.id }}" type="checkbox" 
+                                        ng-model="check.check[item.id]" ng-change="checkBox(drink.id)" />
+                                    <span id="span_for_select_{{ item.id }}" class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
+                                    <span></span>
+                                </label>
+                                </div>
+                            </td>
+                            <td></td>
+                            <td>
+                                <a title="View/Update Store" ui-sref="header.update-store({storeId: $index + 1})">{{ item.name }}</a>
+                            </td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>
+
+                            </td>
+                            <td>
+                                <!--                            <button ng-click="toggleSidebar()" class="btn btn-sm btn-primary">Delete</button>-->
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <!-- end table -->
+
+                <div class="text-center">
+                    <dir-pagination-controls boundary-links="true" on-page-change="pageChangeHandler(newPageNumber)" pagination-id="drinksPagination"></dir-pagination-controls>
+                </div>
+            </div>
+        </div>
+        <!-- end row -->
+    </div>
+    <!-- end panel-body -->
+</div>
+
+
+<!-- delete popup -->
+<div class="delete-popup" id="sidebar-affix">
+    <div class="delete-close" ng-click="toggleSidebar()">
+        <i class="fa fa-close"></i>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <h1>Are you Sure?</h1>
+            <p><b>Fatima</b> store will be deleted permanently!!</p>
+        </div>
+    </div>
+
+    <div class="row" style="margin-top: 30px;">
+        <div class="col-lg-2">
+            <button class="btn btn-block btn-md btn-danger">Yes</button>
+        </div>
+        <div class="col-lg-2 col-md-2 col-sm-12">
+            <button class="btn btn-block btn-md btn-default" ng-click="toggleSidebar()">No</button>
+        </div>
+    </div>
+</div>
+<!-- delete popup -->
